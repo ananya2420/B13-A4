@@ -57,7 +57,7 @@ function toggleStyle(id){
     selected.classList.add('bg-black','text-white');
 
     if(id=='interview-filter-btn'){
-        allCardButton.classList.add('hidden');
+        allCardSection.classList.add('hidden');
         filterSection.classList.remove('hidden');
         renderInterview();
     }else if(id=='all-filter-btn'){
@@ -155,6 +155,15 @@ mainContainer.addEventListener('click',function(event){
 function renderInterview(){
     filterSection.innerHTML=''
 
+     if(interviewList.length === 0){
+        filterSection.innerHTML = `
+            <div class="flex flex-col items-center justify-center py-20">
+                <img src="./jobs.png" alt="No jobs available" class="w-1/3">
+            </div>
+        `;
+        return;
+    }
+
     for(let interview of interviewList){
         let div=document.createElement('div');
         div.className='card flex justify-between border p-8'
@@ -192,6 +201,16 @@ function renderInterview(){
 }
     function renderRejected(){
     filterSection.innerHTML=''
+
+    if(rejectedList.length === 0){
+        filterSection.innerHTML = `
+            <div class="flex flex-col items-center justify-center py-20">
+                <img src="./jobs.png" alt="No jobs available" class="w-1/3">
+            </div>
+        `;
+        return;
+    }
+
 
     for(let rejected of rejectedList){
         let div=document.createElement('div');
