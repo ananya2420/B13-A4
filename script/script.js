@@ -1,5 +1,6 @@
 let interviewList=[];
 let rejectedList=[];
+let currentStatus='all';
 
 let total=document.getElementById('total');
 let interviewCount=document.getElementById('interviewCount');
@@ -40,6 +41,7 @@ function toggleStyle(id){
 
 
     const selected=document.getElementById(id);
+    currentStatus=id
 
 
     selected.classList.remove('bg-gray-300','text:blue')
@@ -47,11 +49,15 @@ function toggleStyle(id){
 
     if(id=='interview-filter-btn'){
         addCardButton.classList.add('hidden');
-
         filterSection.classList.remove('hidden');
+        renderInterview();
     }else if(id=='all-filter-btn'){
         allCardSection.classList.remove('hidden');
         filterSection.classList.add('hidden');
+    }else if(id=='rejected-filter-btn'){
+        allCardSection.classList.add('hidden');
+        filterSection.classList.remove('hidden');
+        renderRejected();
     }
 }
 
@@ -87,8 +93,14 @@ mainContainer.addEventListener('click',function(event){
      if(!mobileExist){
         interviewList.push(cardInfo);
      }
+
+     rejectedList=rejectedList.filter(item=>item.mobileFirst != cardInfo.mobileFirst);
      calculateCount();
-     renderInterview();
+     //renderInterview();
+
+     if(currentStatus == 'rejected-filter-btn'){
+        renderRejected();
+     }
     }
     else if(event.target.classList.contains('rejected-btn')){
       const parentNode=event.target.parentNode.parentNode;
@@ -116,8 +128,16 @@ mainContainer.addEventListener('click',function(event){
      if(!mobileExist){
         rejectedList.push(cardInfo);
      }
+
+     //rejectedList=rejectedList.rejectedFilterBtn(item=>item.mobileFirst !=cardInfo.mobileFirst)
+       interviewList=interviewList.rejectedFilterBtn(item=>item.mobileFirst !=cardInfo.mobileFirst)
+
+       if(currentStatus=="interview-filter-btn"){
+        renderInterview();
+       }
      calculateCount();
-     renderInterview();
+    // renderInterview();
+    //renderRejected();
     }
 })
     
