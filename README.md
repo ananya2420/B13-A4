@@ -18,3 +18,6 @@
 3. Event Bubbling- It is a process that always starts from deepest target element. It starts from DOM anchestor. Suppose User click the Button. means it moves from child to parent.
 4.  Event Delegation-It is a technique that it add listener to parent element instead of child element. It happens because of Event Bubbling. Suppose when user click the button it set itself that place but it take upper level mwhich means parent element. Ultimately element always move from child to parent component.
 5. preventDefault() → stops what the browser would normally do and stopPropagation() → stops the event from reaching other listeners in the DOM.
+
+
+Live Site Link-https://ananya2420.github.io/B13-A4/
