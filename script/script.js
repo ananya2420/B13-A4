@@ -6,6 +6,8 @@ let total=document.getElementById('total');
 let interviewCount=document.getElementById('interviewCount');
 let rejectedCount=document.getElementById('rejectedCount');
 
+let jobsBtn = document.getElementById('jobs-btn');
+
 const allFilterBtn=document.getElementById('all-filter-btn');
 const interviewFilterBtn=document.getElementById('interview-filter-btn');
 const rejectedFilterBtn=document.getElementById('rejected-filter-btn');
@@ -25,6 +27,11 @@ function calculateCount(){
     total.innerText=allCardSection.children.length;
     interviewCount.innerText=interviewList.length;
     rejectedCount.innerText=rejectedList.length;
+
+
+      let appliedJobs = interviewList.length + rejectedList.length; 
+    let totalJobs = allCardSection.children.length;      
+    jobsBtn.innerText = `${appliedJobs} of ${totalJobs} jobs`;
     
 }
 calculateCount();
@@ -41,14 +48,16 @@ function toggleStyle(id){
 
 
     const selected=document.getElementById(id);
-    currentStatus=id
+    currentStatus=id;
+
+     console.log(currentStatus);
 
 
     selected.classList.remove('bg-gray-300','text:blue')
     selected.classList.add('bg-black','text-white');
 
     if(id=='interview-filter-btn'){
-        addCardButton.classList.add('hidden');
+        allCardButton.classList.add('hidden');
         filterSection.classList.remove('hidden');
         renderInterview();
     }else if(id=='all-filter-btn'){
@@ -94,13 +103,14 @@ mainContainer.addEventListener('click',function(event){
         interviewList.push(cardInfo);
      }
 
+
      rejectedList=rejectedList.filter(item=>item.mobileFirst != cardInfo.mobileFirst);
-     calculateCount();
-     //renderInterview();
+   
 
      if(currentStatus == 'rejected-filter-btn'){
         renderRejected();
      }
+     calculateCount()
     }
     else if(event.target.classList.contains('rejected-btn')){
       const parentNode=event.target.parentNode.parentNode;
@@ -129,15 +139,14 @@ mainContainer.addEventListener('click',function(event){
         rejectedList.push(cardInfo);
      }
 
-     //rejectedList=rejectedList.rejectedFilterBtn(item=>item.mobileFirst !=cardInfo.mobileFirst)
-       interviewList=interviewList.rejectedFilterBtn(item=>item.mobileFirst !=cardInfo.mobileFirst)
+    
+       interviewList=interviewList.filter(item=>item.mobileFirst !=cardInfo.mobileFirst)
 
        if(currentStatus=="interview-filter-btn"){
         renderInterview();
        }
      calculateCount();
-    // renderInterview();
-    //renderRejected();
+
     }
 })
     

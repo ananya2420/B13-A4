@@ -19,12 +19,12 @@
 
             <div class="bg-gray-200 p-4">
                 <p>Interview</p>
-                <p id="interviewCount">0</p>
+                <p id="interviewCount" class="text-green-500">0</p>
             </div>
 
             <div class="bg-gray-200 p-4">
                 <p>Rejected</p>
-                <p id="rejectedCount">0</p>
+                <p id="rejectedCount" class="text-red-500">0</p>
             </div>
         </div>
     </header>
@@ -32,18 +32,18 @@
     <hr class="my-5">
 
     <main class="w-[80%] mx-auto">
-        <div>
-            <h1 class="text-4xl font-bold text-gray-500">Available Jobs</h1>
-        </div>
-     <div class="mb-6">
-        <button onClick="toggleStyle('all-filter-btn')" class="bg-blue-500 text-white px-5 py-2" id="all-filter-btn">All</button>
-        <button onClick="toggleStyle('interview-filter-btn')" class="bg-gray-200 px-5 py-2" id="interview-filter-btn">Interview</button>
-        <button onClick="toggleStyle('rejected-filter-btn')" class="bg-gray-200 px-5 py-2" id="rejected-filter-btn">Rejected</button>
-     </div>
 
-     <div class="flex justify-end">
-        <button class="bg-gray-300 px-4 py-2 rounded"> 8 jobs</button>
-     </div>
+<div class="flex justify-between items-center mb-4">
+    <h1 class="text-4xl font-bold text-gray-500">Available Jobs</h1>
+    <button id="jobs-btn" class="bg-gray-300 px-4 py-2 rounded">0 of 8 jobs</button>
+</div>
+
+
+<div class="mb-6 flex gap-4">
+    <button onClick="toggleStyle('all-filter-btn')" class="bg-blue-500 text-white px-5 py-2" id="all-filter-btn">All</button>
+    <button onClick="toggleStyle('interview-filter-btn')" class="bg-gray-200 px-5 py-2" id="interview-filter-btn">Interview</button>
+    <button onClick="toggleStyle('rejected-filter-btn')" class="bg-gray-200 px-5 py-2" id="rejected-filter-btn">Rejected</button>
+</div>
 
      <!--Filtered card-->
      <section id="filtered-section" class="hidden">
